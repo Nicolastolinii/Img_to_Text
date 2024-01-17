@@ -1,0 +1,10 @@
+numpy
+opencv-python
+pdf2image
+pillow
+progressbar2
+pymupdf
+pymupdfb
+pytesseract
+python-utils
+typing_extensions
