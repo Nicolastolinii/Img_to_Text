@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload and Download</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #5b88a5;
+        }
+        #dropArea {
+            border: 2px dashed #8d8984;
+            padding: 80px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #f4f4f2;
+        }
+        #drag {
+            text-align: center;
+            cursor: pointer;
+            padding: 20px;
+            background-color: #d4cdc5;
+            border:2px dashed black;
+
+        }
+        #downloadLink {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="dropArea">
+        <div id="drag">
+            <h1>Drag and Drop to Upload</h1>
+            <p>Or click here to select a file.</p>
+        </div>
+        <input type="file" id="fileInput" style="display: none;" />
+    </div>
+    <a id="downloadLink" download="output.pdf" href="#">Download PDF</a>
+
+    <script>
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        const downloadLink = document.getElementById('downloadLink');
+
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.style.border = '2px dashed #aaa';
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.style.border = '2px dashed #ccc';
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.style.border = '2px dashed #ccc';
+
+            const file = e.dataTransfer.files[0];
+            handleFile(file);
+        });
+
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            handleFile(file);
+        });
+
+        function handleFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('http://127.0.0.1:5000/process', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                downloadLink.href = url;
+                downloadLink.style.display = 'block';
+
+                // Descargar automáticamente
+                downloadLink.click();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

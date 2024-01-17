@@ -4,7 +4,7 @@ from pdf2image import convert_from_path
 import progressbar
 from modules.image_processing import  img_string
 
-def pdf_img(input_path, output_pdf_path):
+def pdf_img(input_path):
     text_content = []
     if input_path.lower().endswith('.pdf'):
         try:
@@ -60,7 +60,7 @@ def pdf_img(input_path, output_pdf_path):
         except Exception as e:
             print(f"Error:{str(e)}")
     bar.finish()
-    # Guarda el documento de salida
-    doc.save(output_pdf_path)
+    result = doc.write()
     doc.close()
     print("\n¡Proceso completado!")
+    return result

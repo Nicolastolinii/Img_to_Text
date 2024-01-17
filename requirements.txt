@@ -8,3 +8,5 @@ pymupdfb
 pytesseract
 python-utils
 typing_extensions
+flask
+flask-cors
