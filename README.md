@@ -20,6 +20,8 @@ Este proyecto es un programa en Python que convierte archivos PDF compuestos por
 
 - **Python 3.x**
 - **Bibliotecas Python:**([ver requisitos detallados](requirements.txt))
+- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract)
+- [Poppler - Página Oficial](https://poppler.freedesktop.org/)
 ### El programa admite los siguientes formatos:
 - .JPG
 - .JPEG
@@ -67,13 +69,28 @@ img_string(img)
 ```
 Realiza la extracción de texto de una imagen preprocesada utilizando la biblioteca Tesseract.
 
-### Dependencias
-- OpenCV (cv2)
-- NumPy (numpy)
-- Tesseract OCR (pytesseract)
+#Configuración del Entorno: Tesseract OCR y Poppler
 ## Configuración de Tesseract OCR
 Asegúrate de tener Tesseract OCR instalado en tu sistema y configurado correctamente. Puedes encontrar más información sobre la instalacion y configuración en la [la documentación oficial de Tesseract OCR](https://github.com/tesseract-ocr/tesseract).
+**Instalación en sistemas basados en Debian/Ubuntu:**
+```
+sudo apt-get update
+sudo apt-get install tesseract-ocr
+```
+**Instalación en sistemas basados en Windows:**
+Descarga el instalador desde la página de descargas de Tesseract OCR y sigue las instrucciones de instalación.
+## Configuración de Poppler
+En la sección "Downloads" o "Descargas", encontrarás enlaces a las versiones más recientes y la documentación asociada. Allí podrás obtener la versión específica de Poppler que necesitas para tu sistema. Si estás utilizando un sistema basado en Linux, es probable que puedas instalar Poppler directamente desde los repositorios de tu distribución.
+```
+sudo apt-get update
+sudo apt-get install poppler-utils
+```
+Para sistemas Windows, puedes descargar los binarios desde la página oficial.
 
+
+<div align="center">
+  #Asegúrate de que tanto Tesseract OCR como Poppler estén correctamente agregados al PATH de tu sistema.
+<div>
 
 
 
