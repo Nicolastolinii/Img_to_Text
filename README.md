@@ -88,8 +88,9 @@ Para sistemas Windows, puedes descargar los binarios desde la página oficial.
 
 
 <div align="center">
+
   
-  #Asegúrate de que tanto Tesseract OCR como Poppler estén correctamente agregados al PATH de tu sistema.
+  # Asegúrate de que tanto Tesseract OCR como Poppler estén correctamente agregados al PATH de tu sistema.
   
 </div>
 
