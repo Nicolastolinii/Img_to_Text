@@ -14,7 +14,6 @@ Este proyecto es un programa en Python que convierte archivos PDF compuestos por
 
 - 📄 Convierte PDFs compuestos por imágenes en un PDF con texto plano.
 - 🖼️ Permite convertir imágenes individuales en un PDF con texto.
-- 
 
 ## Requisitos del Sistema
 
@@ -89,8 +88,10 @@ Para sistemas Windows, puedes descargar los binarios desde la página oficial.
 
 
 <div align="center">
+  
   #Asegúrate de que tanto Tesseract OCR como Poppler estén correctamente agregados al PATH de tu sistema.
-<div>
+  
+</div>
 
 
 
