@@ -12,29 +12,51 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #5b88a5;
+            background-color: #282828;
         }
         #dropArea {
-            border: 2px dashed #8d8984;
+            border-radius: 20px;
+            border: 2px dashed #3b3b3b;
             padding: 80px;
             text-align: center;
             cursor: pointer;
-            background-color: #f4f4f2;
+            background-color: #3b3b3b;
         }
         #drag {
             text-align: center;
+            color: white;
             cursor: pointer;
             padding: 20px;
-            background-color: #d4cdc5;
+            background-color: #282828;
             border:2px dashed black;
+            border-radius: 15px;
 
         }
         #downloadLink {
             display: none;
         }
+        #processingMessage {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffbf8e;
+            border:2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
+    <div id="processingMessage">
+        <p>PROCESANDO ARCHIVO, ESPERE...</p>
+    </div>
+
     <div id="dropArea">
         <div id="drag">
             <h1>Drag and Drop to Upload</h1>
@@ -48,6 +70,7 @@
         const dropArea = document.getElementById('dropArea');
         const fileInput = document.getElementById('fileInput');
         const downloadLink = document.getElementById('downloadLink');
+        const processingMessage = document.getElementById('processingMessage');
 
         dropArea.addEventListener('dragover', (e) => {
             e.preventDefault();
@@ -76,6 +99,8 @@
         });
 
         function handleFile(file) {
+            processingMessage.style.display = 'block';
+
             const formData = new FormData();
             formData.append('file', file);
 
@@ -85,14 +110,18 @@
             })
             .then(response => response.blob())
             .then(blob => {
-                const url = URL.createObjectURL(blob);
-                downloadLink.href = url;
-                downloadLink.style.display = 'block';
+                processingMessage.style.display = 'block';
 
-                // Descargar automáticamente
+                const url = URL.createObjectURL(blob);
+                downloadLink.href = url;downloadLink.onclick = () => {
+                    processingMessage.style.display = 'none';
+                };
                 downloadLink.click();
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                processingMessage.style.display = 'none';
+            });
         }
     </script>
 </body>
