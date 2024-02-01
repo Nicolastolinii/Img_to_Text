@@ -53,7 +53,20 @@ python app.py
 ```
  Esto iniciará la aplicación Flask en http://localhost:5000.
 - Accede a la Interfaz de Usuario.
- Abre tu navegador y visita http://localhost:5000. Aquí encontrarás una interfaz amigable que admite la funcionalidad de arrastrar y soltar para procesar imágenes y PDFs.
+ Abre "index.html" que se encuentra en la carpeta "api" Aquí encontrarás una interfaz amigable que admite la funcionalidad de arrastrar y soltar para procesar imágenes y PDFs.
+
+## Build Docker
+  Deje configurado un Dockerfile para levantar un Docker con el proyecto
+### Crear imagen
+```bash
+docker build -t nombre_de_tu_imagen .
+```
+### Run Docker
+```bash
+docker run --rm --name "nombre del contenedor" nombre_de_tu_imagen
+
+```
+
 ## Funciones Principales
 ```
 preprocess_image(img)
