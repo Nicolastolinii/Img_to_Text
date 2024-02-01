@@ -37,9 +37,13 @@ def process_in_endpoint():
     file_content = archivo.read()
     temp_file_path = save_file(file_content, file_extension)
     #Procesa el archivo y retorna el resultado en formato PDF
-    with ThreadPoolExecutor() as executor:
-        future = executor.submit(process_file, temp_file_path)
-        res = future.result()  # Espera a que la tarea en hilo termine
+    try:
+        with ThreadPoolExecutor() as executor:
+            future = executor.submit(process_file, temp_file_path)
+            res = future.result()  # Espera a que la tarea en hilo termine
+        return res
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
     return res
 if __name__ == '__main__':
