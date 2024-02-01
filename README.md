@@ -67,7 +67,7 @@ docker run --rm --name "nombre del contenedor" nombre_de_tu_imagen
 
 ```
 
-## Funciones Principales
+# Funciones Principales
 ```
 preprocess_image(img)
 ```
