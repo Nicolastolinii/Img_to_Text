@@ -2,7 +2,7 @@ import fitz
 from PIL import Image
 from pdf2image import convert_from_path
 import progressbar
-from modules.image_processing import  img_string
+from .image_processing import  img_string
 
 def pdf_img(input_path):
     text_content = []

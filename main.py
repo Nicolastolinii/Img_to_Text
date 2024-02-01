@@ -1,4 +1,4 @@
-from modules.pdf_converter import pdf_img
+from modulee.pdf_converter import pdf_img
 
 if __name__ == "__main__":
     # Coloca la ruta de tu archivo PDF como argumento de la línea de comandos
