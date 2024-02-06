@@ -79,6 +79,5 @@ def pdf_img(input_path):
         return "No se generaron páginas en el documento."
 
     result = doc.write()
-    doc.close()
-    print("\n¡Proceso completado!")
+    doc.close() 
     return result

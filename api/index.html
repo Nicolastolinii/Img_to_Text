@@ -108,7 +108,13 @@
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.blob())
+            .then(response => {
+                if (response.status === 429) {
+                    errorMessage.style.display = 'block';
+                    throw new Error('Límite de solicitudes alcanzado para este usuario');
+                }
+                return response.blob();
+            })
             .then(blob => {
                 processingMessage.style.display = 'block';
 
