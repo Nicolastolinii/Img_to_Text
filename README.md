@@ -14,7 +14,10 @@ Este proyecto es un programa en Python que convierte archivos PDF compuestos por
 
 - 📄 Convierte PDFs compuestos por imágenes en un PDF con texto plano.
 - 🖼️ Permite convertir imágenes individuales en un PDF con texto.
-
+## Cambios Recientes
+- **[Implementación de límite de solicitudes](https://github.com/Nicolastolinii/Img_to_Text/commit/83fcef2889d77af96837f692834ea0166f604130):**
+  Se implementó un límite de solicitudes por IP para prevenir abusos. Consulta el commit para más detalles sobre la implementación.
+  
 ## Requisitos del Sistema
 
 - **Python 3.x**
