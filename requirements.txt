@@ -11,4 +11,5 @@ python-utils
 typing_extensions
 flask
 tqdm
+sqlite3
 flask-cors

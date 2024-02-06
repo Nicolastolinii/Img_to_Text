@@ -16,6 +16,11 @@ COPY . .
 # Instala las dependencias de la aplicación, incluyendo tu módulo
 RUN pip install --no-cache-dir -r requirements.txt 
 
+# Ejecuta las migraciones para inicializar la base de datos
+RUN flask db init
+RUN flask db migrate -m "Initial migration"
+RUN flask db upgrade
+
 # Expone el puerto en el que se ejecutará la aplicación
 EXPOSE 5000
 
